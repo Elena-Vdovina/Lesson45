@@ -4,7 +4,7 @@ package homework;
 // и количество страниц.
 // Реализуйте интерфейс для сравнения книг: они должны сортироваться по авторам, а если
 // авторы совпадают - по названиям (и там, и там - по алфавиту, "в словарном порядке").
-public class Book implements Comparable {
+public class Book implements Comparable<Book> {
 
   private String author;
   private String title;
@@ -14,5 +14,13 @@ public class Book implements Comparable {
     this.author = author;
     this.title = title;
     this.pages = pages;
+  }
+
+  @Override
+  public int compareTo(Book other) {
+    if (author != other.author) {
+      return author.compareTo(other.author);
+    }
+    return title.compareTo(other.title);
   }
 }
